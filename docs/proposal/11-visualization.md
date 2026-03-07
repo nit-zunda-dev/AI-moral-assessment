@@ -1,25 +1,24 @@
 # ビジュアル・技術方針と補足
 
-## ビジュアル方針
+## ビジュアル方針（GDD 6準拠）
 
-- **倫理観パラメータ:** 診断の魅力を伝える → **レーダーチャート**（Chart.js）
-- **ターゲット層分析:** 市場規模の提示 → **ドーナツチャート**（Chart.js）
-- **NO SVG / NO Mermaid.** すべてHTML/CSS/Canvasで実装。
+- **テーマ:** 冷たいディストピア × 法廷の厳粛さ。各ケースに専用シナリオイラスト（ディストピア・サイバーパンク調）。
+- **倫理観:** 6軸レーダーチャート（SVG）。16タイプそれぞれに専用キャラクターイラスト。
+- **OGP:** Xシェア用カード画像を **Cloudflare Workers で動的生成**（SVG→PNG）。
 
 ---
 
-## アプリ構成（プレゼン構成）
+## 技術スタック（GDD 7準拠）
 
-1. Hero（フックと世界観の提示）
-2. Executive Summary（原案の昇華とビジネス的ポテンシャル）
-3. Core Experience（ゲームループの解説）
-4. Scenarios（ジレンマの具体例で魅力を伝える）
-5. Viral Strategy（Wordle型のトレンドジャック戦略）
-6. Target & Persona（ターゲット層の明確化）
+- **クライアント:** TypeScript + React (or Preact) + Tailwind CSS / ShadcnUI
+- **ホスティング:** Cloudflare Pages（静的）+ Workers（OGP・軽量API）
+- **シナリオ・診断:** 静的JSON + クライアントサイド診断ロジック（DBなし・localStorage）
+
+詳細は [GDD 技術設計](../gdd/15-tech-stack.md)・[UI/UX](../gdd/12-ui-ux.md)。
 
 ---
 
 ## プロジェクト表記
 
 **PROJECT: AIモラル診断 Pitch Document**  
-For Indie Game Developers.
+For Indie Game Developers. 詳細設計は [GDD](../gdd/00-index.md) を参照。
