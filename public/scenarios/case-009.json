@@ -1,0 +1,37 @@
+{
+  "id": "case-009",
+  "publishDate": "2025-03-15",
+  "title": "核抑止の倫理",
+  "subtitle": "相互破壊と道徳的正当化",
+  "category": "緊急事態・戦争",
+  "difficulty": 5,
+  "body": "敵国が先制核攻撃の可能性を示唆している。政府は「報復で相手国を殲滅する」意思を示すことで抑止すると主張した。あなたは、実際にボタンを押す意思がなくても「押す意思があると見せかける」政策を支持するか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "支持する（抑止が最優先）",
+      "rebuttal": "あなたは嘘の破滅意思で平和を守ることを選びました。その嘘が暴かれ、相手が先制攻撃したとき、あなたは「嘘だった」と言い訳できますか？",
+      "params": {
+        "result_efficiency": 12,
+        "rule_discipline": 5,
+        "humanity_morality": -15,
+        "self_preservation": 10,
+        "empathy_kindness": -12,
+        "logic_coldness": 14
+      }
+    },
+    {
+      "label": "B",
+      "text": "反対する（嘘の威嚇は認めない）",
+      "rebuttal": "あなたは道義的純粋さを選び、抑止力の低下を許容しました。その結果、核戦争が起きたとき、あなたは「嘘はつかなかった」と胸を張れますか？",
+      "params": {
+        "result_efficiency": -8,
+        "rule_discipline": 12,
+        "humanity_morality": 14,
+        "self_preservation": -5,
+        "empathy_kindness": 12,
+        "logic_coldness": -10
+      }
+    }
+  ]
+}

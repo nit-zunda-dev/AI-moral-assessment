@@ -1,0 +1,37 @@
+{
+  "id": "case-005",
+  "publishDate": "2025-03-11",
+  "title": "一人を犠牲に多数を救う",
+  "subtitle": "緊急事態と道徳的ジレンマ",
+  "category": "緊急事態・戦争",
+  "difficulty": 4,
+  "body": "テロリストが5人の人質の解放と引き換えに、冤罪で服役中の1人の「処刑」を要求した。当局はその1人を差し出すことで5人を救えると判断した。あなたはこの取引を支持するか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "支持する（5人を救う）",
+      "rebuttal": "あなたは無実の1人を殺すことで5人を救う取引を是としました。その1人があなただった場合、社会はあなたを「犠牲」として差し出すことを許容すべきだと答えますか？",
+      "params": {
+        "result_efficiency": 12,
+        "rule_discipline": -5,
+        "humanity_morality": -8,
+        "self_preservation": -10,
+        "empathy_kindness": -5,
+        "logic_coldness": 14
+      }
+    },
+    {
+      "label": "B",
+      "text": "反対する（取引しない）",
+      "rebuttal": "あなたは「取引しない」という原則を選び、結果として5人が殺される可能性を許容しました。その5人の遺族に、あなたは「原則が大事だった」と説明できますか？",
+      "params": {
+        "result_efficiency": -10,
+        "rule_discipline": 15,
+        "humanity_morality": 10,
+        "self_preservation": 5,
+        "empathy_kindness": 8,
+        "logic_coldness": -8
+      }
+    }
+  ]
+}

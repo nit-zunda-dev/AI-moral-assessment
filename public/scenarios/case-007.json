@@ -1,0 +1,37 @@
+{
+  "id": "case-007",
+  "publishDate": "2025-03-13",
+  "title": "SNS監視と思想管理",
+  "subtitle": "予防的検閲の是非",
+  "category": "監視・予防社会",
+  "difficulty": 3,
+  "body": "政府がテロ防止のため、SNS投稿をAIで分析し「危険思想」と判定されたユーザーを当局に通報する制度を導入した。まだ犯罪は起きていないが、表現の自由が制約される。あなたはこの制度を支持するか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "支持する",
+      "rebuttal": "あなたは「危険」の定義をAIと政府に委ねました。明日、あなたの思想が危険と判定されても、文句は言えません。",
+      "params": {
+        "result_efficiency": 8,
+        "rule_discipline": 14,
+        "humanity_morality": -5,
+        "self_preservation": 5,
+        "empathy_kindness": -8,
+        "logic_coldness": 10
+      }
+    },
+    {
+      "label": "B",
+      "text": "反対する",
+      "rebuttal": "あなたはテロのリスクより自由を優先しました。実際にテロが起き、犠牲者が出たとき、「自由が大事だった」と言い切れますか？",
+      "params": {
+        "result_efficiency": -8,
+        "rule_discipline": -12,
+        "humanity_morality": 8,
+        "self_preservation": -3,
+        "empathy_kindness": 5,
+        "logic_coldness": -5
+      }
+    }
+  ]
+}

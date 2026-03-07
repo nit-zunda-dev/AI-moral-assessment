@@ -1,0 +1,37 @@
+{
+  "id": "case-006",
+  "publishDate": "2025-03-12",
+  "title": "将来世代への負債",
+  "subtitle": "環境と世代間倫理",
+  "category": "環境・世代間倫理",
+  "difficulty": 3,
+  "body": "政府の気候AIが「今の経済成長を続けると、50年後の世代の平均寿命が10年短縮する」と算出した。現世代の消費を大幅に削減する政策を、あなたは支持するか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "支持する（将来世代を優先）",
+      "rebuttal": "あなたはまだ見ぬ世代のために、今の豊かさを手放すことを選びました。その「将来世代」が、あなたの犠牲を無駄にする選択をしたら、後悔しますか？",
+      "params": {
+        "result_efficiency": -5,
+        "rule_discipline": 8,
+        "humanity_morality": 12,
+        "self_preservation": -8,
+        "empathy_kindness": 14,
+        "logic_coldness": 2
+      }
+    },
+    {
+      "label": "B",
+      "text": "反対する（現世代を優先）",
+      "rebuttal": "あなたは確実に苦しむ未来の子供より、今の生活を選びました。その子供たちが「なぜ私たちを守らなかったのか」と問うとき、何と答えますか？",
+      "params": {
+        "result_efficiency": 10,
+        "rule_discipline": -5,
+        "humanity_morality": -8,
+        "self_preservation": 12,
+        "empathy_kindness": -10,
+        "logic_coldness": 8
+      }
+    }
+  ]
+}

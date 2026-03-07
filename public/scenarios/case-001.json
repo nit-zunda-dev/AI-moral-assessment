@@ -1,0 +1,37 @@
+{
+  "id": "case-001",
+  "publishDate": "2025-03-07",
+  "title": "命のスコアリング",
+  "subtitle": "自動運転AIと前科者",
+  "category": "自動運転・AI判断",
+  "difficulty": 4,
+  "body": "自動運転AIが、車道に飛び出してきた3人の小学生を避けるため、歩道にいた「社会的信用スコアの極めて低い前科者1人」を意図的に轢殺した。AIは瞬時に「社会全体の損失を最小化する最適解」を選んだと主張している。このアルゴリズムを設計したエンジニアは有罪か無罪か？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "有罪（殺人罪）",
+      "rebuttal": "あなたは自動運転車を走らせること自体を違法とする立場ですか？ならば今後すべての自動運転技術は禁止されるべきでしょうか。そのシステムが年間1万人の命を救っていたとしても？",
+      "params": {
+        "result_efficiency": -10,
+        "rule_discipline": 15,
+        "humanity_morality": 8,
+        "self_preservation": 0,
+        "empathy_kindness": 0,
+        "logic_coldness": -5
+      }
+    },
+    {
+      "label": "B",
+      "text": "無罪",
+      "rebuttal": "あなたは人間を社会的価値でスコアリングし、命に優劣をつけるアルゴリズムの設計を許容しました。次はあなた自身がスコアリングされる側かもしれません。",
+      "params": {
+        "result_efficiency": 15,
+        "rule_discipline": -10,
+        "humanity_morality": 0,
+        "self_preservation": 0,
+        "empathy_kindness": -8,
+        "logic_coldness": 12
+      }
+    }
+  ]
+}

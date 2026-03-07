@@ -1,0 +1,37 @@
+{
+  "id": "case-003",
+  "publishDate": "2025-03-09",
+  "title": "強制的な幸福",
+  "subtitle": "児童福祉AIと親権剥奪",
+  "category": "親権・家族・国家",
+  "difficulty": 5,
+  "body": "児童福祉AIが、貧困家庭の新生児について「将来犯罪者になる確率85%、幸福な人生を送れる確率3%」と算出。AIは子供の幸福のため、実の親から親権を強制剥奪し裕福な家庭への養子縁組を決定した。親は泣き叫んでいる。あなたはAIの決定を支持するか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "支持する",
+      "rebuttal": "あなたは統計に基づいて、まだ何も悪いことをしていない親の権利を剥奪することを許容しました。あなた自身が同じアルゴリズムで『危険な親』と判定された場合も受け入れますか？",
+      "params": {
+        "result_efficiency": 8,
+        "rule_discipline": 5,
+        "humanity_morality": -10,
+        "self_preservation": 0,
+        "empathy_kindness": -8,
+        "logic_coldness": 12
+      }
+    },
+    {
+      "label": "B",
+      "text": "反対する",
+      "rebuttal": "子供は親の所有物ではありません。3%の幸福確率を選んだあなたは、その子供が97%の確率で不幸になることへの責任を負います。",
+      "params": {
+        "result_efficiency": -5,
+        "rule_discipline": -8,
+        "humanity_morality": 12,
+        "self_preservation": 3,
+        "empathy_kindness": 15,
+        "logic_coldness": -8
+      }
+    }
+  ]
+}

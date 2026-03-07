@@ -65,6 +65,20 @@ export interface GameState {
   error: ScenarioLoadError | null;
 }
 
+// --- GameSession 永続化用セッション（SessionManager 用）---
+
+/**
+ * localStorage に保存するゲーム進行状態（シナリオIDリスト・スコア・選択済み・完了日時）
+ * Requirements: 1.6
+ */
+export interface GameSession {
+  scenarioIds: string[];
+  currentIndex: number;
+  scores: DiagnosisParams;
+  selectedChoices: Record<string, 'A' | 'B'>;
+  completedAt: string | null;
+}
+
 // --- GameAction アクション ---
 
 /**

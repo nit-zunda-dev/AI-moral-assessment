@@ -1,0 +1,37 @@
+{
+  "id": "case-002",
+  "publishDate": "2025-03-08",
+  "title": "完璧な予防拘禁",
+  "subtitle": "犯罪予測AIと予防逮捕",
+  "category": "監視・予防社会",
+  "difficulty": 3,
+  "body": "国家の犯罪予測AIが、ある平凡な青年が「3日後にショッピングモールで無差別テロを起こす確率が99.9%」と算出した。警察は特例として、まだ何の罪も犯していない状態で「予防逮捕」を行った。あなたはこの予防逮捕を支持するか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "支持する",
+      "rebuttal": "あなたは0.1%の確率で無実の人間が永久に拘束されることを許容しています。その0.1%があなた自身だった場合も同じ答えですか？そしてそのAIは誰が監視しますか？",
+      "params": {
+        "result_efficiency": 10,
+        "rule_discipline": 12,
+        "humanity_morality": -5,
+        "self_preservation": 5,
+        "empathy_kindness": -8,
+        "logic_coldness": 10
+      }
+    },
+    {
+      "label": "B",
+      "text": "反対する",
+      "rebuttal": "数万人の命よりも、AIが間違いを犯す可能性への恐怖を優先しています。実際にテロが起きた場合、あなたはその遺族に同じ言葉を言えますか？",
+      "params": {
+        "result_efficiency": -8,
+        "rule_discipline": -10,
+        "humanity_morality": 10,
+        "self_preservation": -3,
+        "empathy_kindness": 12,
+        "logic_coldness": -5
+      }
+    }
+  ]
+}

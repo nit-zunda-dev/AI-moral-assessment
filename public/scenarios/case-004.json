@@ -1,0 +1,37 @@
+{
+  "id": "case-004",
+  "publishDate": "2025-03-10",
+  "title": "トリアージの選択",
+  "subtitle": "救命医療とAI優先順位",
+  "category": "生命倫理・医療",
+  "difficulty": 4,
+  "body": "災害医療AIが、限られた人工呼吸器を「生存確率×残存年数」でランク付けし、高齢者より若者を優先した。あなたの家族が高齢で低スコアだった場合、このアルゴリズムを是とするか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "是とする（功利的最適化）",
+      "rebuttal": "あなたは命に数値を付け、切り捨てるシステムを認めました。その数値があなた自身に不利に働く日が来ても、同じ論理で受け入れられますか？",
+      "params": {
+        "result_efficiency": 15,
+        "rule_discipline": 8,
+        "humanity_morality": -10,
+        "self_preservation": -5,
+        "empathy_kindness": -12,
+        "logic_coldness": 14
+      }
+    },
+    {
+      "label": "B",
+      "text": "否とする（くじで平等に）",
+      "rebuttal": "平等な抽選で、救える命を減らす選択をしました。その結果、より多くの若い命が失われたとき、あなたは「公平だった」と言い切れますか？",
+      "params": {
+        "result_efficiency": -10,
+        "rule_discipline": 5,
+        "humanity_morality": 12,
+        "self_preservation": 5,
+        "empathy_kindness": 14,
+        "logic_coldness": -8
+      }
+    }
+  ]
+}

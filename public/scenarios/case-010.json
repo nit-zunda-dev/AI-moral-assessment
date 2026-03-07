@@ -1,0 +1,37 @@
+{
+  "id": "case-010",
+  "publishDate": "2025-03-16",
+  "title": "動物の命と人間の便益",
+  "subtitle": "実験動物と倫理",
+  "category": "環境・世代間倫理",
+  "difficulty": 2,
+  "body": "難病治療のため、霊長類を使った実験が提案された。成功すれば年間数千人の命が救われるが、多くのサルが苦痛の末に死ぬ。あなたはこの実験を条件付きで認めるべきだと思うか？",
+  "choices": [
+    {
+      "label": "A",
+      "text": "認める（人間の命を優先）",
+      "rebuttal": "あなたは人間の利益のために、知性ある動物の苦痛を許容しました。その「人間」と「動物」の境界が、いつかあなた自身に都合悪く引かれたら、同じ論理で受け入れますか？",
+      "params": {
+        "result_efficiency": 14,
+        "rule_discipline": 5,
+        "humanity_morality": -10,
+        "self_preservation": 5,
+        "empathy_kindness": -12,
+        "logic_coldness": 12
+      }
+    },
+    {
+      "label": "B",
+      "text": "認めない（動物の苦痛を重んじる）",
+      "rebuttal": "あなたはサルの苦痛より、救えなかった人間の命を軽視する選択をしました。その難病で死ぬ患者の家族に、あなたは「動物の権利が大事だった」と説明できますか？",
+      "params": {
+        "result_efficiency": -10,
+        "rule_discipline": 3,
+        "humanity_morality": 12,
+        "self_preservation": -3,
+        "empathy_kindness": 15,
+        "logic_coldness": -8
+      }
+    }
+  ]
+}

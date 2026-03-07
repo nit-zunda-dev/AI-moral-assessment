@@ -22,6 +22,7 @@ export type {
   PersonalityType,
   GamePhase,
   GameState,
+  GameSession,
   GameAction,
 } from './game';
 
