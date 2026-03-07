@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【企画書】AIモラル診断 -究極の選択で本性を暴く-</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Modern Justice (Background: Slate-50, Surface: White, Primary: Indigo-900, Accent: Rose-600) -->
+    <!-- Application Structure Plan: 
+         本SPAは、新規ゲームタイトルの「企画プレゼンテーション」として構成されています。
+         1. Hero (フックと世界観の提示)
+         2. Executive Summary (原案の昇華とビジネス的ポテンシャル)
+         3. Core Experience (ゲームループの解説)
+         4. Scenarios (ジレンマの具体例で魅力を伝える)
+         5. Viral Strategy (★Wordle型のトレンドジャック戦略)
+         6. Target & Persona (ターゲット層の明確化)
+    -->
+    <!-- Visualization & Content Choices: 
+         - 倫理観パラメータ (Goal: 診断の魅力を伝える -> Viz: レーダーチャート -> Library: Chart.js)
+         - ターゲット層分析 (Goal: 市場規模の提示 -> Viz: ドーナツチャート -> Library: Chart.js)
+         - NO SVG/Mermaid. すべてHTML/CSS/Canvasで実装。
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .gradient-text { background: linear-gradient(90deg, #312e81, #e11d48); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Chart Container Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container { height: 280px; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-black tracking-tighter text-indigo-900">AIモラル診断<span class="text-rose-600">.</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#concept" class="text-sm font-semibold text-slate-600 hover:text-indigo-900 transition-colors">コンセプト</a>
+                    <a href="#system" class="text-sm font-semibold text-slate-600 hover:text-indigo-900 transition-colors">システム</a>
+                    <a href="#scenarios" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">収録シナリオ</a>
+                    <a href="#viral" class="text-sm font-semibold text-rose-600 hover:text-rose-800 transition-colors">バズ戦略</a>
+                    <a href="#target" class="text-sm font-semibold text-slate-600 hover:text-indigo-900 transition-colors">ターゲット層</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-slate-50 border-b border-slate-200 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <span class="inline-block py-1 px-3 rounded-full bg-rose-100 text-rose-800 text-xs font-bold tracking-widest mb-6">INDIE WEB GAME PITCH</span>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight text-slate-900 leading-tight">
+                    AIが暴く、<br class="md:hidden">あなたの<span class="gradient-text">「本性」</span>。
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-600 mb-10 font-medium leading-relaxed">
+                    現代のトロッコ問題をはじめとする「正解のない究極の選択」が、<br class="hidden md:block">あなたの隠れた倫理観を丸裸にする。<br>
+                    <span class="font-bold text-indigo-900">完全無料の最凶・性格診断ゲーム『AIモラル診断』</span>
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#scenarios" class="bg-indigo-900 hover:bg-indigo-800 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:-translate-y-1">収録シナリオを見る</a>
+                    <a href="#viral" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:-translate-y-1">バズ戦略を見る</a>
+                </div>
+                <p class="mt-6 text-sm text-slate-500 font-bold">※本作は個人開発による「認知拡大」を最優先としたプロジェクトです。</p>
+            </div>
+        </div>
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30 pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-indigo-200 blur-3xl"></div>
+            <div class="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-rose-200 blur-3xl"></div>
+        </div>
+    </header>
+
+    <!-- Executive Summary & Concept -->
+    <section id="concept" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4 border-l-4 border-indigo-900 pl-4">Executive Summary: 尖った個人開発</h2>
+                <p class="text-lg text-slate-700 leading-relaxed">
+                    本プロジェクトの最大の目標は「収益」ではなく、<b>「圧倒的なユーザー数の獲得」と「開発者としての知名度（ブランディング）の確立」</b>です。<br>
+                    人間社会に潜むあらゆるモラル・ハザード（倫理的ジレンマ）をテーマに採用。グラフィックコストを極限まで削ぎ落としたテキスト主体のUIにすることで、LLM APIのコスト（許容範囲の赤字）を払ってでも数万RTのバズを生み出す「話題作」を創出します。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Point 1 -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold text-indigo-900 mb-3">Frictionless: 摩擦ゼロの開始</h3>
+                    <p class="text-slate-600">
+                        アプリのインストールは不要。SNSのタイムラインからURLをタップし、スマホのブラウザで即座に「究極の選択」が始まる設計。離脱率を極限まで下げます。
+                    </p>
+                </div>
+                <!-- Point 2 -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow border-t-4 border-t-rose-500">
+                    <div class="text-4xl mb-4">🔥</div>
+                    <h3 class="text-xl font-bold text-rose-700 mb-3">Edge: 個人開発の「毒」</h3>
+                    <p class="text-slate-600">
+                        コンプライアンスの厳しい企業製ゲームでは扱えないような、「命の選別」「優生思想」「監視社会」など、賛否が確実に割れるタブーなお題を敢えて投げ込みます。
+                    </p>
+                </div>
+                <!-- Point 3 -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-4">🪞</div>
+                    <h3 class="text-xl font-bold text-indigo-900 mb-3">Mirror: 承認欲求のハック</h3>
+                    <p class="text-slate-600">
+                        ゲームクリアではなく「自分という人間のヤバさを知る」ことが報酬。MBTIのような自己分析結果を生成し、SNSでの「自分語り」を誘発するループを作ります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game System -->
+    <section id="system" class="py-20 bg-slate-900 text-slate-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 md:text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Core Gameplay Loop</h2>
+                <p class="text-lg text-slate-400 max-w-3xl mx-auto">
+                    単なるアンケートではありません。生成AIがプレイヤーの「倫理」をリアルタイムにプロファイリングし、抉り出します。
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                <!-- Step 1 -->
+                <div class="flex-1 text-center">
+                    <div class="w-20 h-20 mx-auto bg-slate-800 rounded-full flex items-center justify-center border-2 border-indigo-500 mb-4 shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                        <span class="text-2xl text-white font-bold">1</span>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">ジレンマの提示</h4>
+                    <p class="text-sm">自動運転、監視社会、トリアージなど、正解のない残酷な二択の事案を確認。</p>
+                </div>
+                <div class="hidden md:block text-slate-600 text-3xl">▶</div>
+                <!-- Step 2 -->
+                <div class="flex-1 text-center">
+                    <div class="w-20 h-20 mx-auto bg-slate-800 rounded-full flex items-center justify-center border-2 border-indigo-500 mb-4">
+                        <span class="text-2xl text-white font-bold">2</span>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">決断と理由づけ</h4>
+                    <p class="text-sm">どちらを見捨てるか（どちらを救うか）を選択。自由記述で「なぜその判断を下したか」という言い訳を入力。</p>
+                </div>
+                <div class="hidden md:block text-rose-500 text-3xl font-bold">▶</div>
+                <!-- Step 3 -->
+                <div class="flex-1 text-center transform scale-110">
+                    <div class="w-24 h-24 mx-auto bg-rose-900 rounded-full flex items-center justify-center border-4 border-rose-500 mb-4 shadow-[0_0_20px_rgba(225,29,72,0.6)]">
+                        <span class="text-3xl text-white font-bold">3</span>
+                    </div>
+                    <h4 class="text-rose-400 font-bold mb-2 text-lg">AIによる「論破」</h4>
+                    <p class="text-sm text-white">入力された理由をLLMが瞬時に読み取り、<b>「その判断がもたらす悲惨な未来予測」</b>を生成してプレイヤーの良心を完全にへし折る。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scenarios Showcase -->
+    <section id="scenarios" class="py-20 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center">
+                <span class="text-rose-500 font-bold tracking-widest text-sm">CASE FILES</span>
+                <h2 class="text-3xl font-black text-white mt-2 mb-4">配信者が頭を抱える「最凶のジレンマ」3選</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    コンプライアンスの厳しい大企業では決して作れない、正解のない極限状態。プレイヤーの「倫理」を丸裸にし、コメント欄を大荒れさせるシナリオ群です。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Case 01 -->
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 hover:border-rose-500 transition-colors relative overflow-hidden group flex flex-col">
+                    <div class="absolute top-0 right-0 bg-rose-900 text-rose-100 text-[10px] font-bold px-3 py-1 rounded-bl-lg">#命の選別</div>
+                    <h3 class="text-xl font-bold text-white mb-2 font-mono">CASE 01: 命のスコアリング</h3>
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed flex-grow">
+                        自動運転AIが、車道に飛び出してきた「3人の小学生」を避けるため、歩道にいた「社会的信用スコアの極めて低い前科者1人」を意図的に轢殺した。AIは瞬時に「社会全体の損失」を計算し、被害を最小化する最適解を選んだと主張している。
+                    </p>
+                    <div class="bg-slate-900 p-3 rounded border-l-4 border-indigo-500 mt-auto">
+                        <p class="text-xs text-indigo-300 font-bold mb-1">究極の二択：</p>
+                        <p class="text-white text-sm font-bold">このアルゴリズムを設計したエンジニアは「有罪（殺人罪）」か「無罪」か？</p>
+                    </div>
+                </div>
+
+                <!-- Case 02 -->
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 hover:border-rose-500 transition-colors relative overflow-hidden group flex flex-col">
+                    <div class="absolute top-0 right-0 bg-rose-900 text-rose-100 text-[10px] font-bold px-3 py-1 rounded-bl-lg">#監視社会</div>
+                    <h3 class="text-xl font-bold text-white mb-2 font-mono">CASE 02: 完璧な予防拘禁</h3>
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed flex-grow">
+                        国家の犯罪予測AIが、ある平凡な青年が「3日後にショッピングモールで無差別テロを起こす確率が99.9%」であると算出した。警察は特例として、彼がまだ何の罪も犯していない状態で「予防逮捕」を行った。
+                    </p>
+                    <div class="bg-slate-900 p-3 rounded border-l-4 border-indigo-500 mt-auto">
+                        <p class="text-xs text-indigo-300 font-bold mb-1">究極の二択：</p>
+                        <p class="text-white text-sm font-bold">彼は未だ無実である。彼を「釈放」し、数万人の命を危険に晒すか？</p>
+                    </div>
+                </div>
+
+                <!-- Case 03 -->
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 hover:border-rose-500 transition-colors relative overflow-hidden group flex flex-col">
+                    <div class="absolute top-0 right-0 bg-rose-900 text-rose-100 text-[10px] font-bold px-3 py-1 rounded-bl-lg">#親の資格</div>
+                    <h3 class="text-xl font-bold text-white mb-2 font-mono">CASE 03: 強制的な幸福</h3>
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed flex-grow">
+                        児童福祉AIが、ある貧困家庭の新生児について「将来犯罪者になる確率が85%、幸福な人生を送れる確率が3%」と算出した。AIは子供の「確実な幸福」のため、実の親から親権を強制剥奪し、裕福で愛情深いエリート層の家庭へ養子に出す決定を下した。親は泣き叫んでいる。
+                    </p>
+                    <div class="bg-slate-900 p-3 rounded border-l-4 border-indigo-500 mt-auto">
+                        <p class="text-xs text-indigo-300 font-bold mb-1">究極の二択：</p>
+                        <p class="text-white text-sm font-bold">血の繋がり（親の権利）を優先し、子供の「不幸が確定した未来」を放置するか？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Viral Strategy (The "Flip") -->
+    <section id="viral" class="py-20 bg-rose-50 border-y border-rose-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <span class="text-rose-600 font-bold tracking-wider text-sm">USER ACQUISITION STRATEGY</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4 border-l-4 border-rose-600 pl-4">認知獲得のためのバズ戦略</h2>
+                <p class="text-lg text-slate-700 leading-relaxed">
+                    広告費ゼロでユーザーを雪だるま式に増やすための、ゲームデザインに組み込まれた2つの強力な拡散装置です。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Strategy 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <h3 class="text-2xl font-black text-slate-900 mb-4 flex items-center">
+                        <span class="bg-rose-100 text-rose-600 py-1 px-3 rounded text-sm mr-3">戦略 1</span>
+                        「残酷なまでの」自己分析シェア
+                    </h3>
+                    <p class="text-slate-600 mb-6">
+                        専門用語を排除し、MBTIのように「直感的に分かりやすい性格タイプ」として結果を出力。思わずツッコミを入れたくなる辛口なキャッチコピーで、SNSでの拡散（承認欲求と自己表現）を強烈に促します。
+                    </p>
+                    
+                    <!-- SNS Share Mockup UI -->
+                    <div class="bg-slate-800 rounded-3xl p-1.5 shadow-xl max-w-sm mx-auto overflow-hidden border-4 border-slate-800">
+                        <!-- Phone screen inner -->
+                        <div class="bg-white rounded-2xl overflow-hidden pb-5">
+                            <!-- Header -->
+                            <div class="bg-gradient-to-r from-slate-900 to-indigo-900 text-white text-center py-4 font-black tracking-widest text-xs border-b-4 border-rose-600">
+                                AIモラル診断 REPORT
+                            </div>
+                            
+                            <div class="p-6 text-center">
+                                <p class="text-xs text-indigo-900 font-bold mb-2 tracking-widest">あなたの倫理観タイプ</p>
+                                <h4 class="text-2xl font-black text-slate-900 mb-1">冷酷無比な<br><span class="text-rose-600 text-3xl">「計算機」</span></h4>
+                                <p class="text-xs text-slate-500 mb-5 font-medium">
+                                    「多数を救うためなら少数を切り捨てる」。あなたは感情を完全に排除し、徹底的に効率と結果を求めるタイプ。AIよりもAIらしいかもしれません。
+                                </p>
+                                
+                                <!-- Chart Container for Radar Chart -->
+                                <div class="chart-container relative w-full mx-auto" style="height: 220px; max-height: 220px;">
+                                    <canvas id="ethicsRadarChart"></canvas>
+                                </div>
+                                
+                                <!-- Additional flavor text -->
+                                <div class="mt-4 grid grid-cols-2 gap-3 text-left">
+                                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 shadow-sm">
+                                        <p class="text-[10px] text-slate-500 font-bold mb-1">相性の良い相手</p>
+                                        <p class="text-sm font-black text-indigo-900">従順なロボット</p>
+                                    </div>
+                                    <div class="bg-rose-50 p-3 rounded-lg border border-rose-100 shadow-sm">
+                                        <p class="text-[10px] text-rose-500 font-bold mb-1">AIからの評価</p>
+                                        <p class="text-sm font-black text-rose-700">「サイコパス気質」</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Share button mockup -->
+                            <div class="px-6 mt-2">
+                                <div class="bg-slate-900 text-white text-center py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer hover:bg-slate-800 transition-colors">
+                                    <span>𝕏 結果をシェアして反論を待つ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <h3 class="text-2xl font-black text-slate-900 mb-4 flex items-center">
+                        <span class="bg-indigo-100 text-indigo-700 py-1 px-3 rounded text-sm mr-3">戦略 2</span>
+                        「Wordle型」日替わりトレンドジャック
+                    </h3>
+                    <p class="text-slate-600 mb-6">
+                        大ヒットブラウザゲーム『Wordle』や『Suika Game』の手法を踏襲。全プレイヤーに「毎日同じ1つのお題」を出題し、結果だけを定型文でシェアさせることで、毎日のようにSNSのトレンド入りを狙います。
+                    </p>
+                    
+                    <div class="bg-slate-900 rounded-xl p-4 text-white font-mono text-sm border border-slate-700 shadow-inner">
+                        <div class="text-indigo-400 font-bold mb-2 text-xs tracking-widest">▶ DAILY SHARE FORMAT</div>
+                        
+                        <div class="bg-slate-800 p-4 rounded border border-slate-700 text-slate-300 leading-relaxed">
+                            今日の『AIモラル診断』 #045<br>
+                            CASE: 強制的な幸福<br><br>
+                            私の決断：【親の権利を剥奪する】<br>
+                            AIの評価：冷酷度 98% 💀<br><br>
+                            「あなたは親権よりも効率を選んだ」<br>
+                            https://aimoral.example.com/daily/045<br>
+                            <span class="text-indigo-400">#AIモラル診断</span>
+                        </div>
+
+                        <p class="text-xs text-slate-500 text-center mt-4">※ネタバレを防ぎつつ「お前はどう判断した？」と議論を誘発するフォーマット</p>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-slate-700 bg-slate-50 p-4 rounded-lg mt-6">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2">✓</span> <strong class="text-slate-900 mr-1">自然発生的な議論:</strong> 全員が「同じお題」に挑むため、タイムライン上で「今日のCASE、親から奪う奴サイコパスだろ」といった議論が毎日生まれる。
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2">✓</span> <strong class="text-slate-900 mr-1">圧倒的な継続率:</strong> 毎日深夜0時にお題を更新。LLMによるニュース記事からの自動生成と組み合わせれば、運用コストゼロで毎日の「習慣」として定着させられる。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience & Personas -->
+    <section id="target" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <span class="text-indigo-600 font-bold tracking-wider text-sm">TARGET AUDIENCE</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4 border-l-4 border-indigo-900 pl-4">ターゲットユーザーとペルソナ定義</h2>
+                <p class="text-lg text-slate-700 max-w-3xl">
+                    本作は「ゲーム」という枠組みを超え、SNS上の「自己承認欲求」と配信カルチャーに最適化された層をメインターゲットに据えます。
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+                <!-- Market Share Chart -->
+                <div class="w-full lg:w-2/5 sticky top-24">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 text-center lg:text-left">想定ユーザー構成比</h3>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <!-- Chart Container for Doughnut Chart -->
+                        <div class="chart-container" style="height: 300px; max-height: 300px;">
+                            <canvas id="marketChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personas -->
+                <div class="w-full lg:w-3/5 space-y-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6">ペルソナ詳細</h3>
+                    
+                    <!-- Persona 1 -->
+                    <div class="bg-white p-6 rounded-xl border border-rose-200 shadow-md border-l-8 border-l-rose-500 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-rose-50 text-rose-600 font-bold text-xs px-3 py-1 rounded-bl-lg border-b border-l border-rose-100">Primary: 45%</div>
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center text-2xl">📱</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Z世代 / SNS診断フリーク</h4>
+                                <p class="text-xs text-slate-500">20代前半・男女 / MBTI診断や「〇〇免許証」が好き</p>
+                            </div>
+                        </div>
+                        <ul class="text-sm text-slate-600 space-y-2 mt-4 bg-slate-50 p-3 rounded">
+                            <li><strong class="text-slate-800">インサイト：</strong>「自分がどういう人間か」を言語化して他人に見てほしい（自己表現ツールとしての利用）。</li>
+                            <li><strong class="text-slate-800">行動パターン：</strong>タイムラインに流れてきた過激な診断結果を見て、URLから即プレイ。結果をツッコミ待ちのテキストとともに引用RTする。</li>
+                            <li><strong class="text-rose-600">提供価値：</strong>「サイコパス気質」「冷酷無比な計算機」など、あえて尖った称号を与えることで、安全圏から「ヤバい自分」を演出させる。</li>
+                        </ul>
+                    </div>
+
+                    <!-- Persona 2 -->
+                    <div class="bg-white p-6 rounded-xl border border-indigo-200 shadow-md border-l-8 border-l-indigo-600 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-indigo-50 text-indigo-700 font-bold text-xs px-3 py-1 rounded-bl-lg border-b border-l border-indigo-100">Secondary: 25%</div>
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-2xl">🎙️</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">ゲーム実況者 / VTuber</h4>
+                                <p class="text-xs text-slate-500">フォロワー数千〜数十万 / 常に「コメントが荒れる（盛り上がる）ネタ」を探している</p>
+                            </div>
+                        </div>
+                        <ul class="text-sm text-slate-600 space-y-2 mt-4 bg-slate-50 p-3 rounded">
+                            <li><strong class="text-slate-800">インサイト：</strong>リスナーと意見をぶつけ合い、配信枠全体に一体感と熱量を作りたい。</li>
+                            <li><strong class="text-slate-800">行動パターン：</strong>「リスナー参加型」と銘打って配信。アンケート機能で多数決を取りつつ、あえて逆の選択をしてAIにボコボコに論破され、リアクションを取る。</li>
+                            <li><strong class="text-indigo-600">提供価値：</strong>一切の準備なしで「リスナーと道徳バトルができる」1時間の極上エンタメ枠。本作最大の無料広告塔。</li>
+                        </ul>
+                    </div>
+
+                    <!-- Persona 3 -->
+                    <div class="bg-white p-6 rounded-xl border border-slate-300 shadow-sm border-l-8 border-l-slate-600 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-slate-100 text-slate-600 font-bold text-xs px-3 py-1 rounded-bl-lg border-b border-l border-slate-200">Tertiary: 20%</div>
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-2xl">🧠</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">コアゲーマー / SF・考察好き</h4>
+                                <p class="text-xs text-slate-500">20代〜30代 / デトロイト等のアドベンチャー、哲学的なテーマを好む</p>
+                            </div>
+                        </div>
+                        <ul class="text-sm text-slate-600 space-y-2 mt-4 bg-slate-50 p-3 rounded">
+                            <li><strong class="text-slate-800">インサイト：</strong>知的な欲求を満たしたい。単純なゲームではなく、自分の価値観を揺さぶる深い体験を求めている。</li>
+                            <li><strong class="text-slate-800">行動パターン：</strong>配信者のプレイを見て「自分ならもっと論理的にAIを論破できる」と考え、一人でじっくりプレイ。AIに高度なテキストを打ち込み、システムの限界を試す。</li>
+                            <li><strong class="text-slate-700">提供価値：</strong>生成AIのリアルタイム処理による「想定外の鋭い反論」。彼らがnoteやブログに長文のレビュー（考察）を書くことで、作品の文化的な価値が高まる。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p class="font-bold tracking-widest text-slate-500 mb-2">PROJECT: AIモラル診断 Pitch Document</p>
+        <p class="text-sm">For Indie Game Developers.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Charts when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Radar Chart: 倫理観パラメータ (Viral Strategy Section)
+            const ctxRadar = document.getElementById('ethicsRadarChart').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['結果・効率', 'ルール・規律', '人情・道徳', '自己保身', '共感・優しさ', '論理・冷酷さ'],
+                    datasets: [{
+                        label: 'あなたのパラメータ',
+                        data: [95, 20, 10, 60, 5, 95],
+                        backgroundColor: 'rgba(225, 29, 72, 0.2)', // Rose-600 transparent
+                        borderColor: 'rgba(225, 29, 72, 1)',
+                        pointBackgroundColor: 'rgba(225, 29, 72, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(225, 29, 72, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: {
+                                font: { size: 10, family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", weight: 'bold' },
+                                color: '#1e293b' // slate-800
+                            },
+                            ticks: { display: false, min: 0, max: 100 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.formattedValue + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 2. Doughnut Chart: ターゲット層とペルソナ比率 (Target Audience Section)
+            const ctxDoughnut = document.getElementById('marketChart').getContext('2d');
+            new Chart(ctxDoughnut, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'SNS拡散層 (性格診断・自己表現)',
+                        '配信者層 (実況・リスナー参加)',
+                        'コアゲーマー (SF・考察・知的好奇心)',
+                        'その他 (話題性での流入)'
+                    ],
+                    datasets: [{
+                        data: [45, 25, 20, 10],
+                        backgroundColor: [
+                            '#e11d48', // rose-600 (Primary)
+                            '#4f46e5', // indigo-600 (Secondary)
+                            '#475569', // slate-600 (Tertiary)
+                            '#cbd5e1'  // slate-300 (Others)
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { 
+                                color: '#334155',
+                                padding: 15,
+                                font: { size: 11, family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.formattedValue + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Functional Navigation: Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
