@@ -12,7 +12,9 @@
     "test:ui": "vitest --ui",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "deploy": "wrangler pages deploy ./dist --project-name=ai-moral-assessment",
+    "deploy:worker": "wrangler deploy"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -42,6 +44,7 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.1.0",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.5",
+    "wrangler": "^3.109.0"
   }
 }

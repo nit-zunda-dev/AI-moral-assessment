@@ -1,0 +1,27 @@
+# Cloudflare Workers 設定（OGP画像生成ワーカー）
+# Cloudflare Pages は以下のコマンドでデプロイ:
+#   wrangler pages deploy ./dist --project-name=ai-moral-assessment
+
+name = "ai-moral-assessment-ogp"
+main = "workers/ogp.ts"
+compatibility_date = "2024-09-23"
+
+# Workers KV Namespace: FONT_STORE（Noto Serif JP フォント格納）
+# セットアップ手順:
+#   1. wrangler kv namespace create FONT_STORE
+#   2. 出力された id を下記に設定する
+#   3. wrangler kv namespace create FONT_STORE --preview
+#   4. 出力された id を preview_id に設定する
+#   5. pyftsubset でフォントをサブセット化（目標 200KB 以内）:
+#      pyftsubset NotoSerifJP-Regular.otf --text-file=./scripts/subset-chars.txt \
+#        --flavor=woff2 --output-file=./fonts/NotoSerifJP-subset.woff2
+#   6. wrangler kv key put --namespace-id=<ID> "NotoSerifJP" \
+#        --path=./fonts/NotoSerifJP-subset.woff2
+
+[[kv_namespaces]]
+binding = "FONT_STORE"
+id = "REPLACE_WITH_ACTUAL_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_ACTUAL_KV_PREVIEW_ID"
+
+[build]
+command = "npm run build"
