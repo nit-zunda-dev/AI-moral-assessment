@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* ===================================================
+   ディストピア法廷テーマ - Tailwind v4 テーマ定義
+   =================================================== */
+@theme {
+  /* カラーパレット */
+  --color-deep-space: #0A0E1A;
+  --color-indigo-dark: #1A2744;
+  --color-verdict-red: #C41E3A;
+  --color-circuit-green: #4FFFB0;
+  --color-parchment: #E8E3D8;
+  --color-slate-purple: #7B68EE;
+
+  /* フォントファミリー */
+  --font-family-display: "Playfair Display", Georgia, serif;
+  --font-family-serif: "Noto Serif JP", "Noto Serif", serif;
+  --font-family-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* ===================================================
+   ShadcnUI CSS 変数 (Tailwind v4 対応)
+   =================================================== */
+@layer base {
+  :root {
+    --background: 225 40% 7%;
+    --foreground: 45 20% 90%;
+    --card: 225 40% 15%;
+    --card-foreground: 45 20% 90%;
+    --popover: 225 40% 10%;
+    --popover-foreground: 45 20% 90%;
+    --primary: 350 74% 44%;
+    --primary-foreground: 45 20% 90%;
+    --secondary: 225 40% 20%;
+    --secondary-foreground: 45 20% 90%;
+    --muted: 225 30% 20%;
+    --muted-foreground: 225 15% 60%;
+    --accent: 159 100% 65%;
+    --accent-foreground: 225 40% 7%;
+    --destructive: 350 74% 44%;
+    --destructive-foreground: 45 20% 90%;
+    --border: 225 30% 22%;
+    --input: 225 30% 22%;
+    --ring: 350 74% 44%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-family-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
