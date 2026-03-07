@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+
+# Build / output
+dist/
+build/
+.output/
+*.tsbuildinfo
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+.dev.vars
+wrangler.toml.local
+
+# Cloudflare
+.wrangler/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE / editor (uncomment if you don't want to track)
+# .vscode/
+# .idea/
+
+# Temp / cache
+.cache/
+.tmp/
+tmp/
+*.swp
+*.swo
+*~
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# Optional: local Kiro/Claude state (uncomment if needed)
+# .kiro/local/
+# .claude/
