@@ -33,6 +33,28 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         error: null,
       };
 
+    case 'RESTORE_GAME': {
+      const { scenarios, session } = action;
+      if (scenarios.length === 0) return state;
+      const scenarioId = scenarios[0].id;
+      const hasChoice = scenarioId in session.selectedChoices;
+      const phase: GameState['phase'] = session.completedAt
+        ? 'RESULT'
+        : hasChoice
+          ? 'VERDICT'
+          : 'CHOICE';
+      return {
+        ...state,
+        phase,
+        scenarios,
+        currentIndex: session.currentIndex,
+        scores: session.scores,
+        selectedChoices: session.selectedChoices,
+        result: session.completedAt ? calculateType(session.scores) : null,
+        error: null,
+      };
+    }
+
     case 'SELECT_CHOICE': {
       if (state.phase !== 'CHOICE') return state;
       const newScores = applyDelta(state.scores, action.delta);

@@ -15,14 +15,17 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "deploy": "wrangler pages deploy ./dist --project-name=ai-moral-assessment",
-    "deploy:worker": "wrangler deploy"
+    "deploy:worker": "wrangler deploy",
+    "perf:check": "npm run build && node scripts/check-bundle-size.mjs 150"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "clsx": "^2.1.1",
+    "react-router-dom": "^7.13.1",
     "tailwind-merge": "^3.0.2",
-    "class-variance-authority": "^0.7.1"
+    "workers-og": "^0.0.27"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

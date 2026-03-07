@@ -4,7 +4,6 @@
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, act } from '@testing-library/react';
-import React from 'react';
 import { gameReducer, initialGameState } from '@/lib/gameReducer';
 import { GameProvider, useGame } from '@/contexts/GameContext';
 import * as session from '@/lib/session';

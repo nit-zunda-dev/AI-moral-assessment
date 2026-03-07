@@ -215,3 +215,23 @@ export function calculateType(params: DiagnosisParams): PersonalityType {
   }
   return found;
 }
+
+/**
+ * id (1〜16) から PersonalityType を返す（ライバル表示用）
+ */
+export function getTypeById(id: number): PersonalityType | undefined {
+  return Object.values(TYPE_MAP).find((t) => t.id === id);
+}
+
+/** 有効な TypeCode かどうかを判定する */
+function isValidTypeCode(code: string): code is TypeCode {
+  return code in TYPE_MAP_DATA;
+}
+
+/**
+ * TypeCode 文字列から PersonalityType を返す（結果ページ用）。無効な場合は null。
+ */
+export function getTypeByCode(code: string): PersonalityType | null {
+  if (!isValidTypeCode(code)) return null;
+  return TYPE_MAP[code] ?? null;
+}

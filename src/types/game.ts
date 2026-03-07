@@ -87,6 +87,7 @@ export interface GameSession {
  */
 export type GameAction =
   | { type: 'INIT_GAME'; scenarios: Scenario[] }
+  | { type: 'RESTORE_GAME'; scenarios: Scenario[]; session: GameSession }
   | { type: 'SELECT_CHOICE'; scenarioId: string; choice: 'A' | 'B'; delta: ParameterDelta }
   | { type: 'ADVANCE_VERDICT' }
   | { type: 'COMPLETE_GAME'; result: PersonalityType }

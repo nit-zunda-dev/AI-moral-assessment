@@ -10,6 +10,7 @@ const DAILY_KEY_PREFIX = 'ai-moral-daily-';
 /** localStorage が利用できない場合のインメモリフォールバック */
 let memorySession: GameSession | null = null;
 const memoryDailyCompleted = new Set<string>();
+const memoryDailyTypeCode: Record<string, TypeCode> = {};
 
 function safeGetItem(key: string): string | null {
   try {
@@ -33,6 +34,7 @@ function safeSetItem(key: string, value: string): void {
     } else if (key.startsWith(DAILY_KEY_PREFIX)) {
       const date = key.slice(DAILY_KEY_PREFIX.length);
       memoryDailyCompleted.add(date);
+      memoryDailyTypeCode[date] = value as TypeCode;
     }
   }
 }
@@ -45,6 +47,7 @@ function safeRemoveItem(key: string): void {
     if (key.startsWith(DAILY_KEY_PREFIX)) {
       const date = key.slice(DAILY_KEY_PREFIX.length);
       memoryDailyCompleted.delete(date);
+      delete memoryDailyTypeCode[date];
     }
   }
 }
@@ -96,6 +99,17 @@ export function markDailyCompleted(date: string, typeCode: TypeCode): void {
   const key = DAILY_KEY_PREFIX + date;
   safeSetItem(key, typeCode);
   memoryDailyCompleted.add(date);
+  memoryDailyTypeCode[date] = typeCode;
+}
+
+/**
+ * 指定した日付のデイリー結果 TypeCode を返す。未プレイまたは取得不可の場合は null。
+ */
+export function getDailyTypeCode(date: string): TypeCode | null {
+  const key = DAILY_KEY_PREFIX + date;
+  const raw = safeGetItem(key);
+  if (raw !== null) return raw as TypeCode;
+  return memoryDailyTypeCode[date] ?? null;
 }
 
 /**
@@ -105,4 +119,5 @@ export function markDailyCompleted(date: string, typeCode: TypeCode): void {
 export function __resetInMemoryFallbackForTests(): void {
   memorySession = null;
   memoryDailyCompleted.clear();
+  for (const k of Object.keys(memoryDailyTypeCode)) delete memoryDailyTypeCode[k];
 }

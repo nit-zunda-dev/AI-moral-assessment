@@ -1,8 +1,18 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { GameProvider } from '@/contexts/GameContext';
+import { LandingPage, DailyPage, ResultPage } from '@/pages';
+
 function App() {
   return (
-    <div className="min-h-screen bg-deep-space text-parchment flex items-center justify-center">
-      <h1 className="font-display text-4xl font-bold">AIモラル診断</h1>
-    </div>
+    <BrowserRouter>
+      <GameProvider>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/daily" element={<DailyPage />} />
+          <Route path="/result" element={<ResultPage />} />
+        </Routes>
+      </GameProvider>
+    </BrowserRouter>
   );
 }
 
