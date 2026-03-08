@@ -6,18 +6,20 @@
 
 ## Core Technologies
 
-- **Language**: TypeScript
-- **Frontend**: React (or Preact) 
-- **Styling**: Tailwind CSS + ShadcnUI
+- **Language**: TypeScript (strict)
+- **Frontend**: React 19 + Vite 6
+- **Styling**: Tailwind CSS v4 + ShadcnUI スタイル（components.json / cn ユーティリティ）
+- **Routing**: React Router v7
 - **Platform**: Cloudflare Pages + Workers
 - **Runtime**: Edge Runtime（Cloudflare）
 
 ## Key Libraries
 
-- **ShadcnUI**: デザインシステム統一
-- **Tailwind CSS**: ユーティリティファースト スタイリング
-- **React/Preact**: コンポーネントベース UI
-- **Cloudflare Workers**: OGP生成・軽量API
+- **ShadcnUI スタイル**: デザインシステム統一（Tailwind v4 対応）
+- **Tailwind CSS v4**: ユーティリティファースト スタイリング
+- **React 19**: コンポーネントベース UI
+- **Vite 6**: ビルド・開発サーバー
+- **Cloudflare Workers**: OGP生成（workers-og）
 
 ## Development Standards
 
@@ -30,7 +32,7 @@ ESLint + Prettier による自動整形、型安全性重視
 ### Performance
 - 静的JSONによる高速レスポンス
 - Edge配信による低レイテンシ
-- 軽量バンドル（Preact検討）
+- 軽量バンドル（gzip 150KB 目標、perf:check で検証）
 
 ## Development Environment
 
@@ -54,3 +56,5 @@ ESLint + Prettier による自動整形、型安全性重視
 
 ---
 _月額¥500以内の制約下で最大パフォーマンスを実現する技術選択_
+
+<!-- Sync: package.json / README に合わせ React 19, Vite 6, Tailwind v4, React Router を明示。Preact 削除。パフォーマンス検証方法を記載。-->

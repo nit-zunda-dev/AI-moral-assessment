@@ -42,11 +42,10 @@
 
 ```typescript
 // Framework imports
-import React from 'react'
-import { NextPage } from 'next'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Internal types
-import { Scenario, Choice, DiagnosisParams } from '@/types'
+import type { Scenario, Choice, DiagnosisParams } from '@/types'
 
 // Business logic
 import { calculateType, generateReport } from '@/lib/diagnosis'
@@ -56,7 +55,7 @@ import { ScenarioCard } from '@/components/ScenarioCard'
 ```
 
 **Path Aliases**:
-- `@/`: `/src/` へのエイリアス
+- `@/`: `/src/` へのエイリアス（tsconfig.app.json の paths）
 
 ## Code Organization Principles
 
@@ -66,3 +65,5 @@ import { ScenarioCard } from '@/components/ScenarioCard'
 
 ---
 _静的配信を前提とした、シンプルで拡張性の高い構造_
+
+<!-- Sync: 実際のスタックは Vite + React Router のため、Import 例を Next.js から React Router に差し替え。@/ の根拠を tsconfig に明記。-->
