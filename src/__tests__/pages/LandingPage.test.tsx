@@ -27,7 +27,7 @@ describe('LandingPage', () => {
         publishDate: '2025-03-07',
         title: '自動運転のジレンマ',
         subtitle: '',
-        category: '自動運転',
+        category: '自動運転・AI判断',
         difficulty: 1,
         body: '本文',
         choices: [
@@ -38,36 +38,54 @@ describe('LandingPage', () => {
     });
   });
 
-  it('「今日のCASE」タイトルを表示する', async () => {
+  it('ヒーローセクションにメインタイトルを表示する', async () => {
     renderLanding();
-    await waitFor(() => {
-      expect(screen.getByTestId('daily-preview')).toBeInTheDocument();
-    });
-    expect(screen.getByText(/今日のCASE/i)).toBeInTheDocument();
+    expect(screen.getByText('AIモラル診断')).toBeInTheDocument();
+  });
+
+  it('ヒーローセクションにキャッチコピーを表示する', async () => {
+    renderLanding();
+    expect(screen.getByText(/あなたの本性/i)).toBeInTheDocument();
   });
 
   it('「今すぐ診断を始める」CTAボタンを表示する', async () => {
     renderLanding();
-    await waitFor(() => {
-      expect(screen.getByTestId('daily-preview')).toBeInTheDocument();
-    });
     const cta = screen.getByRole('link', { name: /今すぐ診断を始める/i });
     expect(cta).toBeInTheDocument();
-  });
-
-  it('CTAのリンク先は /daily である', async () => {
-    renderLanding();
-    await waitFor(() => {
-      expect(screen.getByTestId('daily-preview')).toBeInTheDocument();
-    });
-    const cta = screen.getByRole('link', { name: /今すぐ診断を始める/i });
     expect(cta).toHaveAttribute('href', '/daily');
   });
 
   it('当日のシナリオタイトルをプレビュー表示する', async () => {
     renderLanding();
     await waitFor(() => {
-      expect(screen.getByText('自動運転のジレンマ')).toBeInTheDocument();
+      expect(screen.getByTestId('daily-preview')).toBeInTheDocument();
     });
+    expect(screen.getByText('自動運転のジレンマ')).toBeInTheDocument();
+  });
+
+  it('シナリオモードのCTAが /scenario へのリンクである', async () => {
+    renderLanding();
+    const cta = screen.getByTestId('scenario-mode-cta');
+    expect(cta).toBeInTheDocument();
+    expect(cta).toHaveAttribute('href', '/scenario');
+  });
+
+  it('サービス紹介セクションに3つの特徴を表示する', async () => {
+    renderLanding();
+    expect(screen.getByText('AI論破システム')).toBeInTheDocument();
+    expect(screen.getByText('16タイプ診断')).toBeInTheDocument();
+    expect(screen.getByText(/SNSシェア/i)).toBeInTheDocument();
+  });
+
+  it('デイリーモードのCTAが /daily へのリンクである', async () => {
+    renderLanding();
+    const dailyCta = screen.getByRole('link', { name: /今日のCASEに挑む/i });
+    expect(dailyCta).toBeInTheDocument();
+    expect(dailyCta).toHaveAttribute('href', '/daily');
+  });
+
+  it('フッター注意書きが表示される', async () => {
+    renderLanding();
+    expect(screen.getByText(/エンターテインメント目的/i)).toBeInTheDocument();
   });
 });

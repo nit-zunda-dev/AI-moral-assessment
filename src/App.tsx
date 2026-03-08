@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GameProvider } from '@/contexts/GameContext';
-import { LandingPage, DailyPage, ResultPage } from '@/pages';
+import { LandingPage, DailyPage, ResultPage, ScenarioModePage } from '@/pages';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/daily" element={<DailyPage />} />
+          <Route path="/scenario" element={<ScenarioModePage />} />
           <Route path="/result" element={<ResultPage />} />
         </Routes>
       </GameProvider>

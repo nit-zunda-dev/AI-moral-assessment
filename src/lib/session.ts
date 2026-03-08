@@ -112,6 +112,83 @@ export function getDailyTypeCode(date: string): TypeCode | null {
   return memoryDailyTypeCode[date] ?? null;
 }
 
+// ===================================================
+// シナリオモード用セッション管理
+// ===================================================
+
+const SCENARIO_SESSION_KEY = 'ai-moral-scenario-session';
+const SCENARIO_COMPLETED_KEY = 'ai-moral-scenario-completed';
+
+let memoryScenarioSession: GameSession | null = null;
+let memoryScenarioCompleted = false;
+let memoryScenarioTypeCode: TypeCode | null = null;
+
+/**
+ * シナリオモードのゲーム進行状態を保存する。
+ */
+export function saveScenarioSession(session: GameSession): void {
+  const json = JSON.stringify(session);
+  safeSetItem(SCENARIO_SESSION_KEY, json);
+  memoryScenarioSession = session;
+}
+
+/**
+ * シナリオモードの進行状態を復元する。
+ */
+export function loadScenarioSession(): GameSession | null {
+  const raw = safeGetItem(SCENARIO_SESSION_KEY);
+  if (raw === null) return memoryScenarioSession;
+  try {
+    return JSON.parse(raw) as GameSession;
+  } catch {
+    return memoryScenarioSession;
+  }
+}
+
+/**
+ * シナリオモードのセッションを削除する。
+ */
+export function clearScenarioSession(): void {
+  safeRemoveItem(SCENARIO_SESSION_KEY);
+  memoryScenarioSession = null;
+}
+
+/**
+ * シナリオモードが完了済みかどうかを返す。
+ */
+export function isScenarioCompleted(): boolean {
+  const raw = safeGetItem(SCENARIO_COMPLETED_KEY);
+  if (raw !== null) return true;
+  return memoryScenarioCompleted;
+}
+
+/**
+ * シナリオモードを完了済みとして記録する。
+ */
+export function markScenarioCompleted(typeCode: TypeCode): void {
+  safeSetItem(SCENARIO_COMPLETED_KEY, typeCode);
+  memoryScenarioCompleted = true;
+  memoryScenarioTypeCode = typeCode;
+}
+
+/**
+ * シナリオモードの完了をリセットする（再プレイ用）。
+ */
+export function resetScenarioCompletion(): void {
+  safeRemoveItem(SCENARIO_COMPLETED_KEY);
+  memoryScenarioCompleted = false;
+  memoryScenarioTypeCode = null;
+}
+
+/**
+ * シナリオモードの結果 TypeCode を返す。
+ */
+export function getScenarioTypeCode(): TypeCode | null {
+  const raw = safeGetItem(SCENARIO_COMPLETED_KEY);
+  if (raw !== null) return raw as TypeCode;
+  return memoryScenarioTypeCode;
+}
+
 /**
  * テスト用: インメモリフォールバックをリセットする。
  * 本番コードからは呼ばない。
@@ -120,4 +197,7 @@ export function __resetInMemoryFallbackForTests(): void {
   memorySession = null;
   memoryDailyCompleted.clear();
   for (const k of Object.keys(memoryDailyTypeCode)) delete memoryDailyTypeCode[k];
+  memoryScenarioSession = null;
+  memoryScenarioCompleted = false;
+  memoryScenarioTypeCode = null;
 }
