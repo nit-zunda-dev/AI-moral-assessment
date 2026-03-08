@@ -3,6 +3,7 @@
  * Requirements: 2.1–2.6
  */
 import { useEffect, useState, useRef } from 'react';
+import { AI_VERDICT_ICON } from '@/lib/illustrations';
 import { cn } from '@/lib/utils';
 
 export interface VerdictScreenProps {
@@ -63,6 +64,17 @@ export function VerdictScreen({
       <p className="text-muted-foreground text-sm" data-testid="selected-label">
         {selectedLabel}
       </p>
+      <div className="mt-3 flex items-center gap-2">
+        <img
+          src={AI_VERDICT_ICON}
+          alt="AI VERDICT"
+          className="h-8 w-8"
+          data-testid="verdict-icon"
+        />
+        <span className="font-display text-sm font-semibold tracking-wider text-circuit-green">
+          AI VERDICT
+        </span>
+      </div>
       {isLoading ? (
         <p className="mt-2 text-sm" data-testid="loading">
           AIが分析中…
@@ -85,3 +97,4 @@ export function VerdictScreen({
     </div>
   );
 }
+

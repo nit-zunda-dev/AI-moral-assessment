@@ -22,14 +22,11 @@ export interface RadarChartProps {
   className?: string;
 }
 
-function getVertices(size: number, center: number) {
-  const r = (size / 2) * 0.85;
+/** 中心 (cx, cy) から半径 r の位置に6頂点を計算 */
+function hexPoints(cx: number, cy: number, r: number) {
   return DIAGNOSIS_PARAM_AXES.map((_, i) => {
     const angle = (i * 60 - 90) * (Math.PI / 180);
-    return {
-      x: center + r * Math.cos(angle),
-      y: center + r * Math.sin(angle),
-    };
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
   });
 }
 
@@ -39,48 +36,75 @@ export function RadarChart({
   animated = true,
   className,
 }: RadarChartProps) {
-  const center = size / 2;
-  const vertices = getVertices(size, center);
-  const maxVal = Math.max(
-    1,
-    ...DIAGNOSIS_PARAM_AXES.map((axis) => params[axis])
-  );
-  const points = DIAGNOSIS_PARAM_AXES.map((axis, i) => {
-    const v = vertices[i];
-    const ratio = params[axis] / maxVal;
-    const x = center + (v.x - center) * ratio;
-    const y = center + (v.y - center) * ratio;
+  // レイアウト: ラベル用に周囲にマージンを確保
+  const padding = 60;
+  const totalSize = size + padding * 2;
+  const cx = totalSize / 2;
+  const cy = totalSize / 2;
+  const chartR = size * 0.4; // チャート本体の半径
+  const labelR = chartR + 30; // ラベルの半径（外側）
+
+  const outerVerts = hexPoints(cx, cy, chartR);
+  const labelVerts = hexPoints(cx, cy, labelR);
+
+  // 全軸の値を [0, 1] に正規化（最小値→中心、最大値→外枠）
+  const values = DIAGNOSIS_PARAM_AXES.map((axis) => params[axis]);
+  const minVal = Math.min(...values);
+  const maxVal = Math.max(...values);
+  const range = maxVal - minVal || 1;
+
+  // データポリゴンの頂点を計算
+  const dataPoints = DIAGNOSIS_PARAM_AXES.map((axis, i) => {
+    const ratio = (params[axis] - minVal) / range;
+    // 最低でも0.08を確保し完全に中心に潰れないようにする
+    const clampedRatio = 0.08 + ratio * 0.92;
+    const v = outerVerts[i];
+    const x = cx + (v.x - cx) * clampedRatio;
+    const y = cy + (v.y - cy) * clampedRatio;
     return `${x},${y}`;
   }).join(' ');
+
+  // グリッド線（外枠六角形）
+  const gridPoints = outerVerts.map((v) => `${v.x},${v.y}`).join(' ');
 
   return (
     <div className={cn('inline-block', className)} data-testid="radar-chart">
       <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        className="overflow-visible"
+        width={totalSize}
+        height={totalSize}
+        viewBox={`0 0 ${totalSize} ${totalSize}`}
         aria-label="6軸スコアレーダーチャート"
       >
-        <g transform={`translate(${center}, ${center})`}>
-          {vertices.map((v, i) => (
-            <line
-              key={DIAGNOSIS_PARAM_AXES[i]}
-              x1={0}
-              y1={0}
-              x2={v.x - center}
-              y2={v.y - center}
-              stroke="hsl(var(--muted-foreground))"
-              strokeOpacity={0.4}
-              strokeWidth={1}
-            />
-          ))}
-        </g>
+        {/* グリッド: 外枠六角形 */}
         <polygon
-          points={points}
-          fill="hsl(var(--primary) / 0.2)"
+          points={gridPoints}
+          fill="none"
+          stroke="hsl(var(--muted-foreground))"
+          strokeOpacity={0.2}
+          strokeWidth={1}
+        />
+
+        {/* グリッド: 中心からの軸線 */}
+        {outerVerts.map((v, i) => (
+          <line
+            key={`axis-${DIAGNOSIS_PARAM_AXES[i]}`}
+            x1={cx}
+            y1={cy}
+            x2={v.x}
+            y2={v.y}
+            stroke="hsl(var(--muted-foreground))"
+            strokeOpacity={0.3}
+            strokeWidth={1}
+          />
+        ))}
+
+        {/* データポリゴン */}
+        <polygon
+          points={dataPoints}
+          fill="hsl(var(--primary) / 0.25)"
           stroke="hsl(var(--primary))"
           strokeWidth={2}
+          strokeLinejoin="round"
           className={animated ? 'animate-radar-draw' : ''}
           style={
             animated
@@ -91,18 +115,51 @@ export function RadarChart({
               : undefined
           }
         />
-        {vertices.map((v, i) => (
-          <text
-            key={DIAGNOSIS_PARAM_AXES[i]}
-            x={v.x}
-            y={v.y}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="fill-foreground text-xs"
-          >
-            {AXIS_LABELS[DIAGNOSIS_PARAM_AXES[i]]}
-          </text>
-        ))}
+
+        {/* データポイントのドット */}
+        {DIAGNOSIS_PARAM_AXES.map((axis, i) => {
+          const ratio = (params[axis] - minVal) / range;
+          const clampedRatio = 0.08 + ratio * 0.92;
+          const v = outerVerts[i];
+          const x = cx + (v.x - cx) * clampedRatio;
+          const y = cy + (v.y - cy) * clampedRatio;
+          return (
+            <circle
+              key={`dot-${axis}`}
+              cx={x}
+              cy={y}
+              r={3}
+              fill="hsl(var(--primary))"
+            />
+          );
+        })}
+
+        {/* 軸ラベル */}
+        {labelVerts.map((lv, i) => {
+          const angleDeg = i * 60 - 90;
+          // テキストの配置を角度に応じて調整
+          let anchor: 'start' | 'middle' | 'end' = 'middle';
+          if (angleDeg === -30 || angleDeg === 30) anchor = 'start';
+          else if (angleDeg === 150 || angleDeg === 210) anchor = 'end';
+
+          let dy = 0;
+          if (angleDeg === -90) dy = -6;   // 上
+          else if (angleDeg === 90) dy = 14; // 下 (実質 270-90=180 なので不要だが安全策)
+
+          return (
+            <text
+              key={DIAGNOSIS_PARAM_AXES[i]}
+              x={lv.x}
+              y={lv.y + dy}
+              textAnchor={anchor}
+              dominantBaseline="middle"
+              fill="hsl(var(--foreground))"
+              fontSize={13}
+            >
+              {AXIS_LABELS[DIAGNOSIS_PARAM_AXES[i]]}
+            </text>
+          );
+        })}
       </svg>
     </div>
   );

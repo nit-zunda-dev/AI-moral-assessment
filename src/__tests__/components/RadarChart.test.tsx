@@ -49,7 +49,8 @@ describe('RadarChart', () => {
       <RadarChart params={makeParams()} size={400} />
     );
     const svg = container.querySelector('svg');
-    expect(svg).toHaveAttribute('width', '400');
-    expect(svg).toHaveAttribute('height', '400');
+    // size + padding(60) * 2 = 520
+    expect(svg).toHaveAttribute('width', '520');
+    expect(svg).toHaveAttribute('height', '520');
   });
 });

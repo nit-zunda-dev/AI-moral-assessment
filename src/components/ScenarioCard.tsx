@@ -3,6 +3,7 @@
  * Requirements: 1.1, 1.4, 1.7
  */
 import type { Scenario } from '@/types/scenario';
+import { getScenarioImage } from '@/lib/illustrations';
 import { cn } from '@/lib/utils';
 
 export interface ScenarioCardProps {
@@ -25,10 +26,16 @@ export function ScenarioCard({ scenario, className }: ScenarioCardProps) {
       {scenario.subtitle ? (
         <p className="text-muted-foreground text-sm">{scenario.subtitle}</p>
       ) : null}
-      <div className="mt-2 aspect-video w-full rounded bg-muted/30" aria-hidden />
+      <img
+        src={getScenarioImage(scenario.id)}
+        alt={scenario.title}
+        className="mt-2 w-full max-h-[40vh] rounded object-contain"
+        data-testid="scenario-image"
+      />
       <p className="mt-3 leading-relaxed" data-testid="scenario-body">
         {scenario.body}
       </p>
     </article>
   );
 }
+
