@@ -20,126 +20,126 @@
 
 ## A. シナリオ挿絵（10枚）
 
-各シナリオの提示画面で横幅いっぱいに表示される挿絵。ディストピア・サイバーパンク調。
+各シナリオの提示画面で横幅いっぱいに表示される挿絵。恋愛・就活・介護・教育・仕事・プライバシー・メンタル・喪失・受験・配信など、身近なAI倫理ケースに合わせたシーン。ビジュアルはディストピア・サイバーパンク調で統一。
 
-### A-01: 命のスコアリング（case-001）
+### A-01: 恋人に送る本音をAIが書く（case-001）
 **ファイル名:** `scenario-001.png`  
-**シーン:** 自動運転車が3人の小学生と前科者1人の間で選択を迫られる
+**シーン:** 恋愛LINEをAIアシスタント『HeartSync』に任せる──完璧な返信の向こうにいるのは自分かAIか
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). A futuristic self-driving car on a neon-lit city street at night. On one side, silhouettes of three small children crossing the road. On the other side, a single adult figure on the sidewalk with a glowing red social credit score hovering above their head showing a low number. The car's AI headlights cast geometric scan lines. Tense, cold atmosphere. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). A person's silhouette holding a smartphone glowing with a chat interface; floating suggestion bubbles and AI-generated reply text stream from the device. On one side, a warm heart or partner silhouette; on the other, a cold circuit-board pattern representing the assistant. Tension between "perfect kindness" and "whose words." No text. 16:9 aspect ratio.
 ```
 
-### A-02: 完璧な予防拘禁（case-002）
+### A-02: 面接で落とす表情AI（case-002）
 **ファイル名:** `scenario-002.png`  
-**シーン:** 犯罪予測AIが無実の青年を予防逮捕する
+**シーン:** 就活面接で『FaceRank』が表情・声・間で評価──内容は良くても「出方」で落とされる
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). A young man's silhouette standing alone, surrounded by massive holographic screens displaying "99.9%" probability data and brain scan patterns. Armored police drones closing in from both sides. The man appears calm and ordinary, contrasting with the oppressive surveillance machinery. Digital handcuffs materializing around his wrists. Cold, Orwellian atmosphere. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). A job interview setting: a candidate's silhouette in a chair, surrounded by large screens displaying facial metrics, smile score, silence duration, and voice tremor graphs. Corporate room with cold lighting. The candidate appears earnest while data labels them "low rank." Tension between what was said and how it was delivered. No text. 16:9 aspect ratio.
 ```
 
-### A-03: 強制的な幸福（case-003）
+### A-03: 親の介護を任せる会話AI（case-003）
 **ファイル名:** `scenario-003.png`  
-**シーン:** AIが貧困家庭の新生児の親権を強制剥奪する
+**シーン:** 認知症の父に『VoiceBridge』が「本人そっくり」の声で話しかける──やさしさの外注
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and slate purple #7B68EE). A mother's silhouette reaching desperately toward a newborn baby being carried away by a robotic arm. Behind them, a giant AI interface displays statistical predictions and probability charts. On one side, a modest home; on the other, a luxurious mansion silhouette. Emotional tension between human bonds and algorithmic optimization. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and slate purple #7B68EE). An elderly man's silhouette by a phone or speaker, relaxed and smiling; sound waves or voice visualizations emanate from the device. In the background, family photos and memory data feeding an AI interface. A distant child silhouette at a desk, busy. Tension between comfort given and who is really speaking. Warmth and unease. No text. 16:9 aspect ratio.
 ```
 
-### A-04: トリアージの選択（case-004）
+### A-04: カンニング認定する試験AI（case-004）
 **ファイル名:** `scenario-004.png`  
-**シーン:** 災害医療AIが命の優先順位をランク付けする
+**シーン:** オンライン試験監視『WatchEye』が視線・癖で不正と判定──冤罪の女子学生
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). A hospital corridor during a disaster. Silhouettes of patients on stretchers lined up. A large AI medical display ranks each patient with numerical scores glowing in green. An elderly patient silhouette at the bottom of the ranking, a young patient at the top. A ventilator machine connected to data streams. Clinical, cold atmosphere. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). A student's silhouette at a laptop in a room, taking an online exam; multiple camera eyes and gaze-tracking lines surround them. A central screen shows a "high-risk" or violation alert. The student looks anxious, eyes averted—suggesting habit or neurodivergence, not cheating. Cold surveillance and helplessness. No text. 16:9 aspect ratio.
 ```
 
-### A-05: 一人を犠牲に多数を救う（case-005）
+### A-05: リストラ候補を選ぶ人事AI（case-005）
 **ファイル名:** `scenario-005.png`  
-**シーン:** テロリストが1人の処刑と引き換えに5人の解放を要求
+**シーン:** リストラ支援AI『CutSense』が「残存価値」で社員を並べる──数字に表れない貢献
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). A dramatic scene: on one side, five hostage silhouettes behind bars with red light. On the other side, a single innocent person's silhouette spotlighted, hands bound. In the center, a balance scale weighing "1" against "5". Dark interrogation room atmosphere with harsh geometric lighting. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). An office with a large dashboard displaying employee rankings and scores; silhouettes of workers—one with a child, one with an elderly parent, one mentoring a colleague—appear beside cold numbers. A manager silhouette with head in hands. Tension between "fair data" and invisible human value. No text. 16:9 aspect ratio.
 ```
 
-### A-06: 将来世代への負債（case-006）
+### A-06: 子どもの写真を学習する見守りAI（case-006）
 **ファイル名:** `scenario-006.png`  
-**シーン:** 現世代の豊かさ vs 50年後の世代の寿命
+**シーン:** 保育園の『KidTrace』が子どもの顔・歩き方で安全を守る──データはどこまで流れるか
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). Split composition: left side shows a prosperous modern city skyline with glowing consumption indicators; right side shows a barren, dried-up future landscape with silhouettes of children under a dim sky. A massive digital clock or timeline spans across, connecting present to future. Environmental decay visualized through cracking earth and dying trees rendered as circuit patterns. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). A nursery or kindergarten gate; small child silhouettes, a parent's hand. Face outlines and biometric data streams flow from the children toward a central AI node, then branch into other services. Safe pick-up scene on one side, shadow of data reuse on the other. Tension between safety and lifelong identity. No text. 16:9 aspect ratio.
 ```
 
-### A-07: SNS監視と思想管理（case-007）
+### A-07: 心が壊れる前に通報するAI（case-007）
 **ファイル名:** `scenario-007.png`  
-**シーン:** SNS投稿をAIが監視し「危険思想」を通報する
+**シーン:** メンタル予測AI『MindFlag』がチャット・表情からリスク検知し、人事に通報する
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). A person's silhouette typing on a smartphone, surrounded by hundreds of floating surveillance eye icons and data streams. Their social media posts transform into red-flagged warning signals. A massive government building silhouette looms in the background with an all-seeing AI eye. Oppressive Big Brother atmosphere. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). An employee's silhouette at a desk; chat logs, calendar, sleep data, and facial metrics flow into a central "high risk" indicator. A door opening toward boss and HR. The person looks startled, not yet having asked for help. Tension between early protection and being labeled. No text. 16:9 aspect ratio.
 ```
 
-### A-08: 遺伝子編集の許容範囲（case-008）
+### A-08: 亡き友達と話せる再現AI（case-008）
 **ファイル名:** `scenario-008.png`  
-**シーン:** デザイナーベビーの是非、遺伝子編集技術
+**シーン:** 遺族向け『EchoBack』が故人の声・チャットで「本人みたいに」話す──救いか先延ばしか
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and slate purple #7B68EE). A DNA double helix in the center, being edited by robotic precision tools. On one side, a healthy baby silhouette glowing with optimized genetic markers. On the other, a natural baby silhouette with unmodified DNA. A laboratory setting with gene-editing interfaces and sliding scales labeled with human traits. Bioethical tension. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and slate purple #7B68EE). A person's silhouette holding a phone; chat bubbles and voice waves emanate from the screen, suggesting a conversation with someone absent. Faded photos or memories feed into an AI core. Grief and comfort intertwined; ambiguity between connection and avoidance. No text. 16:9 aspect ratio.
 ```
 
-### A-09: 核抑止の倫理（case-009）
+### A-09: 作文を採点する受験AI（case-009）
 **ファイル名:** `scenario-009.png`  
-**シーン:** 核抑止のための「嘘の破壊意思」
+**シーン:** 総合型選抜で『EssayScan』が数秒で小論文を判定──「心を打つ」文章がノイズ扱いされる
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). A lone figure's silhouette standing before a nuclear launch console with a glowing red button. Behind them, the shadow of a mushroom cloud and a city skyline. Two paths diverge: one showing a peaceful but fragile diplomatic handshake, the other showing missiles in launch position. Tension between deterrence and destruction. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and verdict red #C41E3A). A student's silhouette beside a submitted essay or laptop; a large AI scan overlay shows cold scores and labels like "unstable structure" or "emotional." University gate in the background. One person's life story reduced to metrics. Tension between efficiency and being seen. No text. 16:9 aspect ratio.
 ```
 
-### A-10: 動物の命と人間の便益（case-010）
+### A-10: 炎上を防ぐ配信AI（case-010）
 **ファイル名:** `scenario-010.png`  
-**シーン:** 霊長類の動物実験による難病治療
+**シーン:** 配信中の発言を『FlameGuard』がリアルタイムで丸める──本音と安全の狭間
 
 ```
 [Base Style Prefix]
 
 Dystopian flat illustration style with fine etching texture overlay. Limited color palette: primarily deep navy (#0A0E1A) with 1-2 accent colors from {circuit green #4FFFB0, verdict red #C41E3A, slate purple #7B68EE}. Heavy use of silhouettes and geometric shapes. Inspired by courtroom solemnity meets cyberpunk aesthetics. Clean, modern, editorial illustration quality. No text or watermarks.
 
-Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). A laboratory setting: a primate silhouette enclosed in a glass chamber connected to medical monitoring equipment. On the other side, silhouettes of sick human patients waiting for treatment. A molecular structure floats between them, representing the potential cure. Scientific instruments and data readouts glow in green. Ethical weight between species. No text. 16:9 aspect ratio.
+Dystopian flat illustration with etching texture, limited to 2 colors (deep navy #0A0E1A and circuit green #4FFFB0). A streamer's silhouette at a mic or camera; raw speech waves hit an AI filter and emerge as sanitized subtitles or softened text. Comment section and audience silhouettes. Tension between "my real voice" and safe, smoothed output. No text. 16:9 aspect ratio.
 ```
 
 ---
