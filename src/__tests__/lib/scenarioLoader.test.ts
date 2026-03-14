@@ -117,6 +117,29 @@ describe('ScenarioLoader', () => {
       }
     });
 
+    it('シナリオ JSON に videoUrl があってもパース成功する', async () => {
+      vi.stubGlobal('fetch', vi.fn());
+      const fetchMock = vi.mocked(fetch);
+      const scenarioWithVideo = { ...validScenario, videoUrl: 'https://www.youtube.com/embed/qaJof9HGpCU' };
+      fetchMock
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            entries: [{ id: 'case-001', publishDate: '2025-03-07' }],
+          }),
+        } as Response)
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => scenarioWithVideo,
+        } as Response);
+
+      const result = await loadDaily('2025-03-07');
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.value.videoUrl).toBe('https://www.youtube.com/embed/qaJof9HGpCU');
+      }
+    });
+
     it('シナリオ JSON がスキーマ違反のとき INVALID_SCHEMA を返す', async () => {
       vi.stubGlobal('fetch', vi.fn());
       const fetchMock = vi.mocked(fetch);

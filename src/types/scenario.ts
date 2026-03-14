@@ -47,6 +47,8 @@ export interface Scenario {
   difficulty: 1 | 2 | 3 | 4 | 5;
   body: string;
   choices: [Choice, Choice];
+  /** YouTube埋め込み用URL（例: https://www.youtube.com/embed/xxx）。未指定時は動画なし。 */
+  videoUrl?: string;
 }
 
 // --- Result 直和型 ---

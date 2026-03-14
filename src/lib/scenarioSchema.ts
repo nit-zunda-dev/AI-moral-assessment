@@ -41,5 +41,6 @@ export function isScenario(v: unknown): v is Scenario {
   if (typeof d !== 'number' || d < 1 || d > 5 || Math.floor(d) !== d) return false;
   if (!Array.isArray(o.choices) || o.choices.length !== 2) return false;
   if (!isChoice(o.choices[0]) || !isChoice(o.choices[1])) return false;
+  if (o.videoUrl !== undefined && typeof o.videoUrl !== 'string') return false;
   return true;
 }

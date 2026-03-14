@@ -66,4 +66,30 @@ describe('VerdictScreen', () => {
     );
     expect(container.firstChild).toHaveClass('verdict-root');
   });
+
+  it('videoUrl がないときは解説動画を表示しない', () => {
+    render(
+      <VerdictScreen
+        rebuttalText="論破"
+        selectedLabel="A"
+        onNext={() => {}}
+      />
+    );
+    expect(screen.queryByTitle('解説動画')).not.toBeInTheDocument();
+  });
+
+  it('videoUrl があるときは解説動画の iframe を表示する', () => {
+    const embedUrl = 'https://www.youtube.com/embed/qaJof9HGpCU';
+    render(
+      <VerdictScreen
+        rebuttalText="論破"
+        selectedLabel="A"
+        onNext={() => {}}
+        videoUrl={embedUrl}
+      />
+    );
+    const iframe = screen.getByTitle('解説動画');
+    expect(iframe).toBeInTheDocument();
+    expect(iframe).toHaveAttribute('src', embedUrl);
+  });
 });

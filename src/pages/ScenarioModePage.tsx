@@ -177,6 +177,7 @@ export function ScenarioModePage() {
           rebuttalText={c.rebuttal}
           selectedLabel={`あなたは「${c.label}」を選びました`}
           onNext={() => dispatch({ type: 'ADVANCE_VERDICT' })}
+          {...(scenario.videoUrl !== undefined && { videoUrl: scenario.videoUrl })}
         />
       </div>
     );

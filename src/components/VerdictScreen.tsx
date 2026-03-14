@@ -10,6 +10,8 @@ export interface VerdictScreenProps {
   rebuttalText: string;
   selectedLabel: string;
   onNext: () => void;
+  /** YouTube埋め込み用URL（例: https://www.youtube.com/embed/xxx）。未指定時は動画を表示しない。 */
+  videoUrl?: string;
   className?: string;
 }
 
@@ -20,6 +22,7 @@ export function VerdictScreen({
   rebuttalText,
   selectedLabel,
   onNext,
+  videoUrl,
   className,
 }: VerdictScreenProps) {
   const [displayedLength, setDisplayedLength] = useState(0);
@@ -83,6 +86,17 @@ export function VerdictScreen({
         <p className="mt-2 leading-relaxed" data-testid="rebuttal-text">
           {visibleText}
         </p>
+      )}
+      {videoUrl && (
+        <div className="mt-4 w-full aspect-video max-w-xl rounded-lg overflow-hidden">
+          <iframe
+            src={videoUrl}
+            title="解説動画"
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       )}
       <div className="mt-4 flex gap-2">
         <button

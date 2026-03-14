@@ -174,6 +174,21 @@ describe('Scenario / Choice データ型', () => {
     expect(scenario.publishDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 
+  it('Scenario にオプションの videoUrl を持たせられる', () => {
+    const scenario: Scenario = {
+      id: 'case-001',
+      publishDate: '2025-04-15',
+      title: 'テスト',
+      subtitle: 'サブ',
+      category: 'テスト',
+      difficulty: 1,
+      body: '本文',
+      choices: [sampleChoiceA, sampleChoiceB],
+      videoUrl: 'https://www.youtube.com/embed/example',
+    };
+    expect(scenario.videoUrl).toBe('https://www.youtube.com/embed/example');
+  });
+
   it('difficulty は 1〜5 の整数のみ受け入れる', () => {
     const validDifficulties: Scenario['difficulty'][] = [1, 2, 3, 4, 5];
     validDifficulties.forEach(d => {
